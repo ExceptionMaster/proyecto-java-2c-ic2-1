@@ -1,100 +1,79 @@
-# Proyecto del Segundo Cuatrimestre Fundamentos de Programación (Curso  \<XX\>/\<YY\>)
-Autor/a: \<nombre del autor\>   uvus:\<uvus del autor\>
+# Proyecto del Segundo Cuatrimestre Fundamentos de Programación (Curso  22/23)
+Autor: José Manuel Amador Gallardo &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  UVUS: SMT4497
 
-Aquí debes añadir la descripción del dataset y un enunciado del dominio del proyecto.
-
+El dataset consta de varias propiedades de coches (como pueden ser fabricante, modelo, color, tamaño del motor, capacidad de combustible, etc). 
 
 ## Estructura de las carpetas del proyecto
 
-* **/src**: Contiene los diferentes archivos que forman parte del proyecto. Debe estar estructurado en los siguentes paquetes
-  * **fp.\<dominio\>**: Paquete que contiene los tipos del proyecto.
-  * **fp.\<dominio\>.test**: Paquete que contiene las clases de test del proyecto.
+* **/src**: Contiene los diferentes archivos que forman parte del proyecto.
+  * **fp.coches**: Paquete que contiene los tipos del proyecto.
+  * **fp.coches.test**: Paquete que contiene las clases de test del proyecto.
   * **fp.common**: Paquete que contiene los tipos auxiliares del proyecto
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
-* **/data**: Contiene el dataset o datasets del proyecto
-    * **\<dataset1.csv\>**: Añade una descripción genérica del dataset.
-    * **\<dataset2.csv\>**: Añade una descripción del resto de datasets que puedas tener.
+* **/data**: Contiene el dataset del proyecto
+    * **coches.csv**: Datos sobre coches de varios fabricantes.
     
 ## Estructura del *dataset*
 
-Aquí debes describir la estructura del dataset explicando qué representan los datos que contiene y la descripción de cada una de las columnas. Incluye también la URL del dataset original.
+El dataset está compuesto por 20 columnas, con la siguiente descripción:
 
-El dataset está compuesto por \<N\> columnas, con la siguiente descripción:
-
-* **\<columna 1>**: de tipo \<tipo\>, representa....
-* **\<columna 2>**: de tipo \<tipo\>, representa....
-....
+* **Manufacturer**: de tipo ``String``, representa el nombre del fabricante.
+* **Model**: de tipo ``String``, representa el modelo del vehículo.
+* **Sales in thousands**: de tipo ``Integer``, representa el número de ventas en miles.
+* **4-year resale value**: de tipo ``Float/Double``, representa el valor de reventa a los cuatro años.
+* **Vehicle type**: de tipo ``String``, representa el tipo de vehículo.
+* **Price in thousands**: de tipo ``Float/Double``, representa el precio en miles del vehículo.
+* **Engine size**: de tipo ``Float/Double``, representa el tamaño del motor en L.
+* **Horsepower**: de tipo Integer, representa la potencia del vehículo en CV.
+* **Wheelbase**: de tipo ``Float/Double``, representa la distancia entre los dos ejes de las ruedas.
+* **Width**: de tipo ``Float/Double``, representa el ancho del vehículo.
+* **Length**: de tipo ``Float/Double``, representa el largo del vehículo.
+* **Curb weight**: de tipo ``Float/Double``, representa el peso en vacío del vehículo.
+* **Fuel capacity**: de tipo ``Float/Double``, representa la capacidad de combustible del vehículo.
+* **Fuel efficiency**: de tipo ``Integer``, representa la eficiencia del combustible.
+* **Latest launch**: de tipo ``String``, representa el último lanzamiento del vehículo.
+* **Color 1**: de tipo ``String``, representa el primer color disponible del vehículo.
+* **Color 2**: de tipo ``String``, representa el segundo color disponible del vehículo.
+* **Color 3**: de tipo ``String``, representa el tercer color disponible del vehículo.
+* **Color 4**: de tipo ``String``, representa el cuarto color disponible del vehículo.
+* **Color 5**: de tipo ``String``, representa el quinto color disponible del vehículo.
 
 ## Tipos implementados
 
-Describe aquí los tipos que usas en tu proyecto.
-
 ### Tipo Base
-Descripción breve del tipo base.
+Tipo Coche con sus getters y setters, a parte del toString, equals y compareTo. 
 
 **Propiedades**:
 
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
-- 
+- fabricante, de tipo ``String``, consultable y modificable. 
+- modelo, de tipo ``String``, consultable y modificable. 
+- potencia, de tipo ``Integer``, consultable y modificable.
+- tamañoMotor, de tipo ``Float``, consultable y modificable.
+- tipo, de tipo ``TipoCoche``, consultable y modificable.
+- precio, de tipo ``Integer``, consultable y modificable.
+- salidaMercado,  de tipo ``LocalDate``, consultable y modificable.
+- listaColores, de tipo ``List<ColorCoche>``, consultable y modificable.
+
 **Constructores**: 
 
-- C1: Descripción del constructor 1.
-- C2: Descripción del constructor 2.
-- ...
+- C1: Un parámetro por cada propiedad.
+- C2: Sólo recibe como parámetros el fabricante, el modelo y la lista de colores.
 
 **Restricciones**:
- 
-- R1: Descripción de la restricción 1.
-- R2: Descripción de la restricción 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
 
-**Criterio de ordenación**: Describir el criterio de ordenación (si lo hay).
+- R1: ninguna propiedad puede ser null excepto los colores a partir de Color 1.
+- R2: los valores numéricos Integer y Float no pueden ser negativos ni 0.
+
+**Criterio de igualdad**: Sirve para saber si dos objetos tipo Coche son iguales.
+
+**Criterio de ordenación**: Compara el nombre del fabricante para ordenar por nombre de fabricante.
 
 **Otras operaciones**:
  
--	_método 1_: Descripción del método 1.
-- ...
+-	tipoCocheParser: Convierte el tipo de vehículo para el toString (ej.) ``TipoCoche.PASSENGER`` a ``"Passenger"``.
+- salidaMercadoParser: Convierte el formato ``YYYY-MM-dd`` a ``dd/MM/YYYY``.
+- getFormatoCorto: Devuelve el toString en un formato más comprimido "one-line".
 
 #### Tipos auxiliares
-Descripción de los tipos auxiliares que sean necesarios añadir al proyecto.
-
-### Factoría
-Descripción breve de la factoría.
-
-- _método 1_: Descripción del método 1.
--	_método 2_: Descripción del método 2.
-
-### Tipo Contenedor
-
-Descripción breve del tipo contenedor.
-
-**Propiedades**:
-
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
-- 
-**Constructores**: 
-
-- C1: Descripción del constructor 1.
-- C2: Descripción del constructor 2.
-- ...
-
-**Restricciones**:
- 
-- R1: Descripción de la restricción 1.
-- R2: Descripción de la restricción 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
-
-**Criterio de ordenación**: Describir el criterio de ordenación (si lo hay).
-
-**Otras operaciones**:
- 
--	_método 1_: Descripción del método 1.
-- ...
+- **TipoCoche**: Enumerado para el tipo de vehículo, si es Passenger o Car.
+- **ColorCoche**: Enumerado para los colores.
