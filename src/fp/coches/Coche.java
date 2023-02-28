@@ -7,9 +7,10 @@ import java.util.Objects;
 
 import fp.common.ColorCoche;
 import fp.common.TipoCoche;
+import fp.utiles.Checkers;
 import fp.utiles.Parsers;
 
-public class Coche {
+public class Coche implements Comparable<Coche>{
 	private String fabricante;
 	private String modelo;
 	private Integer potencia;
@@ -20,6 +21,14 @@ public class Coche {
 	private List<ColorCoche> listaColores = new ArrayList<ColorCoche>();
 	
 	public Coche(String fab,String mod,Integer pot,Float tamMot,TipoCoche tipo,Integer prec,LocalDate salMerc,List<ColorCoche> cols) {
+		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
+		Checkers.check("El modelo no puede ser null: ", modelo != null);
+		Checkers.check("La potencia no puede ser 0 o menor: ", potencia > 0);
+		Checkers.check("El tamaño del motor no puede ser 0 o menor: ", tamañoMotor > 0);
+		Checkers.check("El tipo no puede ser null: ", tipo != null);
+		Checkers.check("El precio no puede ser 0 o menor: ", precio > 0);
+		Checkers.check("La fecha de salida no puede ser null: ", salidaMercado != null);
+		Checkers.check("Los colores sólo pueden ser null a partir de Color 1: ", listaColores.get(0) != null);
 		this.fabricante = fab;
 		this.modelo = mod;
 		this.potencia = pot;
@@ -31,6 +40,9 @@ public class Coche {
 	}
 	
 	public Coche(String fab, String mod, List<ColorCoche> cols) {
+		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
+		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
+		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
 		this.fabricante = fab;
 		this.modelo = mod;
 		this.listaColores = cols;
