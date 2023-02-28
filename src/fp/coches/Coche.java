@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import fp.common.ColorCoche;
 import fp.common.TipoCoche;
+import fp.utiles.Parsers;
 
 public class Coche {
 	private String fabricante;
@@ -99,19 +100,7 @@ public class Coche {
 		this.listaColores = listaColores;
 	}
 	
-	public String tipoCocheParser(TipoCoche tipo) {
-		String res = null;
-		if(tipo==TipoCoche.PASSENGER) {
-			res = "Passenger";
-		} else if(tipo==TipoCoche.CAR) {
-			res = "Car";
-		}
-		return res;
-	}
-	
-	public String salidaMercadoParser(LocalDate fecha) {
-		return fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear();
-	}
+
 	
 	public String getFormatoCorto() {
 		return getFabricante() + " " + 
@@ -120,14 +109,14 @@ public class Coche {
 			   getPotencia() + "cv (" + 
 			   getPrecio() + "€) - " + 
 			   getTipo() + " - " + 
-			   salidaMercadoParser(getSalidaMercado()) + " - " + 
+			   Parsers.salidaMercadoParser(getSalidaMercado()) + " - " + 
 			   getListaColores();
 	}
 
 	@Override
 	public String toString() {
 		return "Coches [fabricante=" + fabricante + ", modelo=" + modelo + ", potencia=" + potencia + "cv, tamañoMotor="
-				+ tamañoMotor + "L, tipo=" + tipoCocheParser(tipo) + ", precio=" + precio + "€, salidaMercado=" + salidaMercadoParser(salidaMercado)
+				+ tamañoMotor + "L, tipo=" + Parsers.tipoCocheParser(tipo) + ", precio=" + precio + "€, salidaMercado=" + Parsers.salidaMercadoParser(salidaMercado)
 				+ ", listaColores=" + listaColores + "]";
 	}
 
@@ -145,5 +134,8 @@ public class Coche {
 				&& Objects.equals(precio, other.precio) && Objects.equals(salidaMercado, other.salidaMercado)
 				&& Objects.equals(tamañoMotor, other.tamañoMotor) && tipo == other.tipo;
 	}
-
+	
+	public int compareTo(Coche c) {
+	    return this.getFabricante().compareTo(c.getFabricante());
+	}
 }
