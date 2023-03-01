@@ -61,8 +61,8 @@ Tipo Coche con sus getters y setters, a parte del toString, equals y compareTo.
 
 **Restricciones**:
 
-- R1: ninguna propiedad puede ser null excepto los colores a partir de Color 1.
-- R2: los valores numéricos Integer y Float no pueden ser negativos ni 0.
+- R1: el precio no puede ser negativo.
+- R2: la lista de colores no puede ser ```null```.
 
 **Criterio de igualdad**: Sirve para saber si dos objetos tipo Coche son iguales.
 

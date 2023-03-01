@@ -21,14 +21,8 @@ public class Coche implements Comparable<Coche>{
 	private List<ColorCoche> listaColores = new ArrayList<ColorCoche>();
 	
 	public Coche(String fab,String mod,Integer pot,Float tamMot,TipoCoche tipo,Integer prec,LocalDate salMerc,List<ColorCoche> cols) {
-		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
-		Checkers.check("El modelo no puede ser null: ", modelo != null);
-		Checkers.check("La potencia no puede ser 0 o menor: ", potencia > 0);
-		Checkers.check("El tamaño del motor no puede ser 0 o menor: ", tamañoMotor > 0);
-		Checkers.check("El tipo no puede ser null: ", tipo != null);
-		Checkers.check("El precio no puede ser 0 o menor: ", precio > 0);
-		Checkers.check("La fecha de salida no puede ser null: ", salidaMercado != null);
-		Checkers.check("Los colores sólo pueden ser null a partir de Color 1: ", listaColores.get(0) != null);
+		/* Constructor al que se le pasa como parámetros cada una de las propiedades
+		 * del tipo, para así construir nuevos tipos con dichas propiedades.*/
 		this.fabricante = fab;
 		this.modelo = mod;
 		this.potencia = pot;
@@ -40,6 +34,9 @@ public class Coche implements Comparable<Coche>{
 	}
 	
 	public Coche(String fab, String mod, List<ColorCoche> cols) {
+		/* Constructor al que se le pasa como parámetros las propiedades fabricante, modelo
+		 * y colores, por ejemplo para realizar una búsqueda rápida de un coche y sus colores.
+		 */
 		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
 		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
 		Checkers.check("El fabricante no puede ser null: ", fabricante != null);
@@ -48,6 +45,11 @@ public class Coche implements Comparable<Coche>{
 		this.listaColores = cols;
 	}
 	
+	//RESTRICCIONES
+	public Coche(Integer prec) {if(prec>0) precio = prec; else Checkers.check("El precio no puede ser negativo", prec<0);}
+	public Coche(List<ColorCoche> cols) {if(cols!=null) listaColores = cols; else Checkers.check("Los colores no pueden ser nulos", true);}
+	
+	//GETTERS Y SETTERS
 	public String getFabricante() {
 		return fabricante;
 	}
@@ -112,8 +114,7 @@ public class Coche implements Comparable<Coche>{
 		this.listaColores = listaColores;
 	}
 	
-
-	
+	//FORMATO CORTO
 	public String getFormatoCorto() {
 		return getFabricante() + " " + 
 			   getModelo() + " " + 
@@ -124,14 +125,16 @@ public class Coche implements Comparable<Coche>{
 			   Parsers.salidaMercadoParser(getSalidaMercado()) + " - " + 
 			   getListaColores();
 	}
-
+	
+	//TOSTRING
 	@Override
 	public String toString() {
 		return "Coches [fabricante=" + fabricante + ", modelo=" + modelo + ", potencia=" + potencia + "cv, tamañoMotor="
 				+ tamañoMotor + "L, tipo=" + Parsers.tipoCocheParser(tipo) + ", precio=" + precio + "€, salidaMercado=" + Parsers.salidaMercadoParser(salidaMercado)
 				+ ", listaColores=" + listaColores + "]";
 	}
-
+	
+	//EQUALS
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -147,6 +150,7 @@ public class Coche implements Comparable<Coche>{
 				&& Objects.equals(tamañoMotor, other.tamañoMotor) && tipo == other.tipo;
 	}
 	
+	//COMPARETO
 	public int compareTo(Coche c) {
 	    return this.getFabricante().compareTo(c.getFabricante());
 	}
