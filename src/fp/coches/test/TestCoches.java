@@ -59,6 +59,10 @@ public class TestCoches {
 		} else {
 			System.out.println(c1.getFabricante()+" "+c1.getModelo()+" es distinto a "+c2.getFabricante()+" "+c2.getModelo());
 		}
+		System.out.println();
+		System.out.println("Tipo auxiliar (Motor):");
+		System.out.println("c1: " + c1.getMotor());
+		System.out.println("c2: " + c2.getMotor());
 		System.out.println("--------------------------------------------------");
 	}
 }

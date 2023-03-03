@@ -76,10 +76,6 @@ public class Coche implements Comparable<Coche>{
 	public List<ColorCoche> getListaColores() {
 		return listaColores;
 	}
-
-	public void setListaColores(List<ColorCoche> listaColores) {
-		this.listaColores = listaColores;
-	}
 	
 	//FORMATO CORTO
 	public String getFormatoCorto() {
