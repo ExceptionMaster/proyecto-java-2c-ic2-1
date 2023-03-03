@@ -6,6 +6,7 @@ import java.util.List;
 
 import fp.coches.Coche;
 import fp.common.ColorCoche;
+import fp.common.Motor;
 import fp.common.TipoCoche;
 
 public class TestCoches {
@@ -16,7 +17,7 @@ public class TestCoches {
 		listaColores1.add(ColorCoche.ROJO);
 		listaColores1.add(ColorCoche.BLANCO);
 		listaColores1.add(ColorCoche.AZUL);
-		Coche c1 = new Coche("Audi","A4",150,(float) 1.8,TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
+		Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
 		
 		System.out.println("-------------- PRUEBA DEL OBJETO c1 --------------");
 		System.out.println("Formato completo:");
@@ -30,7 +31,7 @@ public class TestCoches {
 		listaColores2.add(ColorCoche.ROJO);
 		listaColores2.add(ColorCoche.BLANCO);
 		listaColores2.add(ColorCoche.AZUL);
-		Coche c2 = new Coche("Volkswagen","Passat",150,(float) 1.8,TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
+		Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
 		
 		
 		System.out.println("-------------- PRUEBA DEL OBJETO c2 --------------");

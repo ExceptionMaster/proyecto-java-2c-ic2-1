@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import fp.common.ColorCoche;
+import fp.common.Motor;
 import fp.common.TipoCoche;
 import fp.utiles.Checkers;
 import fp.utiles.Parsers;
@@ -13,22 +14,20 @@ import fp.utiles.Parsers;
 public class Coche implements Comparable<Coche>{
 	private String fabricante;
 	private String modelo;
-	private Integer potencia;
-	private Float tamañoMotor;
+	private Motor motor;
 	private TipoCoche tipo;
 	private Integer precio;
 	private LocalDate salidaMercado;
 	private List<ColorCoche> listaColores = new ArrayList<ColorCoche>();
 	
-	public Coche(String fab,String mod,Integer pot,Float tamMot,TipoCoche tipo,Integer prec,LocalDate salMerc,List<ColorCoche> cols) {
+	public Coche(String fab,String mod,Motor motor,TipoCoche tipo,Integer prec,LocalDate salMerc,List<ColorCoche> cols) {
 		/* Constructor al que se le pasa como parámetros cada una de las propiedades
 		 * del tipo, para así construir nuevos tipos con dichas propiedades.*/
 		Checkers.check("El precio no puede ser negativo",prec>0);
 		Checkers.check("Los colores no pueden ser null", listaColores!=null);
 		this.fabricante = fab;
 		this.modelo = mod;
-		this.potencia = pot;
-		this.tamañoMotor = tamMot;
+		this.motor = motor;
 		this.tipo = tipo;
 		this.precio = prec;
 		this.salidaMercado = salMerc;
@@ -62,20 +61,12 @@ public class Coche implements Comparable<Coche>{
 		this.modelo = modelo;
 	}
 
-	public Float getTamañoMotor() {
-		return tamañoMotor;
-	}
-
-	public void setTamañoMotor(Float tamañoMotor) {
-		this.tamañoMotor = tamañoMotor;
+	public Motor getMotor() {
+		return motor;
 	}
 	
-	public Integer getPotencia() {
-		return potencia;
-	}
-
-	public void setPotencia(Integer potencia) {
-		this.potencia = potencia;
+	public void setMotor(Motor motor) {
+		this.motor = motor;
 	}
 
 	public Integer getPrecio() {
@@ -114,8 +105,6 @@ public class Coche implements Comparable<Coche>{
 	public String getFormatoCorto() {
 		return getFabricante() + " " + 
 			   getModelo() + " " + 
-			   getTamañoMotor() + "L/" + 
-			   getPotencia() + "cv (" + 
 			   getPrecio() + "€) - " + 
 			   getTipo() + " - " + 
 			   Parsers.salidaMercadoParser(getSalidaMercado()) + " - " + 
@@ -125,11 +114,10 @@ public class Coche implements Comparable<Coche>{
 	//TOSTRING
 	@Override
 	public String toString() {
-		return "Coches [fabricante=" + fabricante + ", modelo=" + modelo + ", potencia=" + potencia + "cv, tamañoMotor="
-				+ tamañoMotor + "L, tipo=" + Parsers.tipoCocheParser(tipo) + ", precio=" + precio + "€, salidaMercado=" + Parsers.salidaMercadoParser(salidaMercado)
-				+ ", listaColores=" + listaColores + "]";
+		return "Coche [fabricante=" + fabricante + ", modelo=" + modelo + ", motor=" + motor + ", tipo=" + tipo
+				+ ", precio=" + precio + ", salidaMercado=" + salidaMercado + ", listaColores=" + listaColores + "]";
 	}
-	
+
 	//EQUALS
 	@Override
 	public boolean equals(Object obj) {
@@ -141,11 +129,11 @@ public class Coche implements Comparable<Coche>{
 			return false;
 		Coche other = (Coche) obj;
 		return Objects.equals(fabricante, other.fabricante) && Objects.equals(listaColores, other.listaColores)
-				&& Objects.equals(modelo, other.modelo) && Objects.equals(potencia, other.potencia)
+				&& Objects.equals(modelo, other.modelo) && Objects.equals(motor, other.motor)
 				&& Objects.equals(precio, other.precio) && Objects.equals(salidaMercado, other.salidaMercado)
-				&& Objects.equals(tamañoMotor, other.tamañoMotor) && tipo == other.tipo;
+				&& tipo == other.tipo;
 	}
-	
+
 	//COMPARETO
 	public int compareTo(Coche c) {
 	    return this.getFabricante().compareTo(c.getFabricante());
