@@ -49,24 +49,12 @@ public class Coche implements Comparable<Coche>{
 		return fabricante;
 	}
 
-	public void setFabricante(String fabricante) {
-		this.fabricante = fabricante;
-	}
-
 	public String getModelo() {
 		return modelo;
 	}
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-
 	public Motor getMotor() {
 		return motor;
-	}
-	
-	public void setMotor(Motor motor) {
-		this.motor = motor;
 	}
 
 	public Integer getPrecio() {
@@ -81,16 +69,8 @@ public class Coche implements Comparable<Coche>{
 		return salidaMercado;
 	}
 
-	public void setSalidaMercado(LocalDate salidaMercado) {
-		this.salidaMercado = salidaMercado;
-	}
-
 	public TipoCoche getTipo() {
 		return tipo;
-	}
-
-	public void setTipo(TipoCoche tipo) {
-		this.tipo = tipo;
 	}
 
 	public List<ColorCoche> getListaColores() {
@@ -104,7 +84,7 @@ public class Coche implements Comparable<Coche>{
 	//FORMATO CORTO
 	public String getFormatoCorto() {
 		return getFabricante() + " " + 
-			   getModelo() + " " + 
+			   getModelo() + " (" + 
 			   getPrecio() + "€) - " + 
 			   getTipo() + " - " + 
 			   Parsers.salidaMercadoParser(getSalidaMercado()) + " - " + 
