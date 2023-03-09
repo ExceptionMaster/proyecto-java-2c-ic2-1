@@ -10,31 +10,12 @@ import fp.common.Motor;
 import fp.common.TipoCoche;
 
 public class TestCoches {
-	
-	
-	public static void main(String[] args) {
-		// TODO Apéndice de método generado automáticamente
-		TestCoche();
-		TestCompareTo();
-		TestEquals();
-		TestMotor();
-	}
+	private static List<ColorCoche> listaColores1 = new ArrayList<ColorCoche>();
+	private static Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
+	private static List<ColorCoche> listaColores2 = new ArrayList<ColorCoche>();
+	private static Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
 	
 	private static void TestCoche() {
-		List<ColorCoche> listaColores1 = new ArrayList<ColorCoche>();
-		listaColores1.add(ColorCoche.NEGRO);
-		listaColores1.add(ColorCoche.ROJO);
-		listaColores1.add(ColorCoche.BLANCO);
-		listaColores1.add(ColorCoche.AZUL);
-		Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
-		
-		List<ColorCoche> listaColores2 = new ArrayList<ColorCoche>();
-		listaColores2.add(ColorCoche.NEGRO);
-		listaColores2.add(ColorCoche.ROJO);
-		listaColores2.add(ColorCoche.BLANCO);
-		listaColores2.add(ColorCoche.AZUL);
-		Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
-		
 		System.out.println();
 		System.out.println("-------------- PRUEBA DEL OBJETO c1 --------------");
 		System.out.println("Formato completo:");
@@ -52,21 +33,7 @@ public class TestCoches {
 		System.out.println("--------------------------------------------------");
 	}
 	
-	private static void TestCompareTo() {
-		List<ColorCoche> listaColores1 = new ArrayList<ColorCoche>();
-		listaColores1.add(ColorCoche.NEGRO);
-		listaColores1.add(ColorCoche.ROJO);
-		listaColores1.add(ColorCoche.BLANCO);
-		listaColores1.add(ColorCoche.AZUL);
-		Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
-		
-		List<ColorCoche> listaColores2 = new ArrayList<ColorCoche>();
-		listaColores2.add(ColorCoche.NEGRO);
-		listaColores2.add(ColorCoche.ROJO);
-		listaColores2.add(ColorCoche.BLANCO);
-		listaColores2.add(ColorCoche.AZUL);
-		Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
-		
+	private static void TestCompareTo() {	
 		System.out.println();
 		System.out.println("-------------- PRUEBA DEL compareTo --------------");
 		System.out.println(c1.compareTo(c2));
@@ -81,20 +48,6 @@ public class TestCoches {
 	}
 	
 	private static void TestEquals() {
-		List<ColorCoche> listaColores1 = new ArrayList<ColorCoche>();
-		listaColores1.add(ColorCoche.NEGRO);
-		listaColores1.add(ColorCoche.ROJO);
-		listaColores1.add(ColorCoche.BLANCO);
-		listaColores1.add(ColorCoche.AZUL);
-		Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
-		
-		List<ColorCoche> listaColores2 = new ArrayList<ColorCoche>();
-		listaColores2.add(ColorCoche.NEGRO);
-		listaColores2.add(ColorCoche.ROJO);
-		listaColores2.add(ColorCoche.BLANCO);
-		listaColores2.add(ColorCoche.AZUL);
-		Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
-		
 		System.out.println();
 		System.out.println("--------------- PRUEBA DEL equals ---------------");
 		System.out.println(c1.equals(c2));
@@ -107,20 +60,6 @@ public class TestCoches {
 	}
 	
 	private static void TestMotor() {
-		List<ColorCoche> listaColores1 = new ArrayList<ColorCoche>();
-		listaColores1.add(ColorCoche.NEGRO);
-		listaColores1.add(ColorCoche.ROJO);
-		listaColores1.add(ColorCoche.BLANCO);
-		listaColores1.add(ColorCoche.AZUL);
-		Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
-		
-		List<ColorCoche> listaColores2 = new ArrayList<ColorCoche>();
-		listaColores2.add(ColorCoche.NEGRO);
-		listaColores2.add(ColorCoche.ROJO);
-		listaColores2.add(ColorCoche.BLANCO);
-		listaColores2.add(ColorCoche.AZUL);
-		Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
-		
 		System.out.println();
 		System.out.println("-------------- PRUEBA DEL OBJETO Motor -----------");
 		System.out.println("c1: " + c1.getMotor());
@@ -128,4 +67,23 @@ public class TestCoches {
 		System.out.println("--------------------------------------------------");
 	}
 	
-}
+	public static void llenarListas() {
+		listaColores1.add(ColorCoche.NEGRO);
+		listaColores1.add(ColorCoche.ROJO);
+		listaColores1.add(ColorCoche.BLANCO);
+		listaColores1.add(ColorCoche.AZUL);
+		listaColores2.add(ColorCoche.NEGRO);
+		listaColores2.add(ColorCoche.ROJO);
+		listaColores2.add(ColorCoche.BLANCO);
+		listaColores2.add(ColorCoche.AZUL);
+	}
+	
+	public static void main(String[] args) {
+		llenarListas();
+		TestCoche();
+		TestMotor();
+		TestEquals();
+		TestCompareTo();
+	}
+	
+}	
