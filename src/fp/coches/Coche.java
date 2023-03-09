@@ -94,7 +94,13 @@ public class Coche implements Comparable<Coche>{
 				+ ", precio=" + precio + ", salidaMercado=" + salidaMercado + ", listaColores=" + listaColores + "]";
 	}
 
-	//EQUALS
+	// HASHCODE
+	@Override
+	public int hashCode() {
+		return Objects.hash(fabricante, listaColores, modelo, motor, precio, salidaMercado, tipo);
+	}
+
+	// EQUALS
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -110,8 +116,27 @@ public class Coche implements Comparable<Coche>{
 				&& tipo == other.tipo;
 	}
 
-	//COMPARETO
+	// COMPARETO
+	@Override
 	public int compareTo(Coche c) {
-	    return this.getFabricante().compareTo(c.getFabricante());
+		// TODO Apéndice de método generado automáticamente
+		int res;
+		if(c==null) {
+			throw new NullPointerException();
+		}
+		res = getFabricante().compareTo(c.getFabricante());
+		if(res == 0) {
+			res = getModelo().compareTo(c.getModelo());
+			if(res==0) {
+				res = getMotor().compareTo(c.getMotor());
+				if(res==0) {
+					res = getPrecio().compareTo(c.getPrecio());
+					if(res==0) {
+						res = getSalidaMercado().compareTo(c.getSalidaMercado());
+					}
+				}
+			}
+		}
+		return res;
 	}
 }

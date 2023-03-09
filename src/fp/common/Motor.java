@@ -36,6 +36,13 @@ public class Motor implements Comparable<Motor> {
 		return "Motor [tamaño=" + tamaño + ", potencia=" + potencia + ", capacidad=" + capacidad + ", eficiencia="
 				+ eficiencia + "]";
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(capacidad, eficiencia, potencia, tamaño);
+	}
 
 	@Override
 	public boolean equals(Object obj) {
