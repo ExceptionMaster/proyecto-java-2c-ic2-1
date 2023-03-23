@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fp.coches.Coche;
+import fp.coches.FactoriaCoches;
 import fp.common.ColorCoche;
 import fp.common.Motor;
 import fp.common.TipoCoche;
+import fp.utiles.Mostrar;
 
 public class TestCoches {
 	private static List<ColorCoche> listaColores1 = new ArrayList<ColorCoche>();
-	private static Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,23990,LocalDate.of(2015, 8, 15),listaColores1);
+	private static Coche c1 = new Coche("Audi","A4",new Motor(1.8,150,13.2,28),TipoCoche.Passenger,23990,LocalDate.of(2015, 8, 15),listaColores1);
 	private static List<ColorCoche> listaColores2 = new ArrayList<ColorCoche>();
-	private static Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.PASSENGER,21200,LocalDate.of(2014, 10, 30),listaColores2);
+	private static Coche c2 = new Coche("Volkswagen","Passat",new Motor(1.8,150,13.2,28),TipoCoche.Passenger,21200,LocalDate.of(2014, 10, 30),listaColores2);
 	
 	private static void TestCoche() {
 		System.out.println();
@@ -78,12 +80,20 @@ public class TestCoches {
 		listaColores2.add(ColorCoche.AZUL);
 	}
 	
+	public static void TestFactoria() {
+		System.out.println();
+		System.out.println("-------------- PRUEBA DEL OBJETO FactoriaCoches -----------");
+		Mostrar.mostrar(FactoriaCoches.leeCoches("./data/Coches.csv"), 156);
+		System.out.println("-----------------------------------------------------------");
+	}
+	
 	public static void main(String[] args) {
 		llenarListas();
 		TestCoche();
 		TestMotor();
 		TestEquals();
 		TestCompareTo();
+		TestFactoria();
 	}
 	
 }	

@@ -23,7 +23,7 @@ public class Coche implements Comparable<Coche>{
 	public Coche(String fab,String mod,Motor motor,TipoCoche tipo,Integer prec,LocalDate salMerc,List<ColorCoche> cols) {
 		/* Constructor al que se le pasa como parámetros cada una de las propiedades
 		 * del tipo, para así construir nuevos tipos con dichas propiedades.*/
-		Checkers.check("El precio no puede ser negativo",prec>0);
+		Checkers.check("El precio no puede ser negativo",prec>=0);
 		Checkers.check("Los colores no pueden ser null", listaColores!=null);
 		this.fabricante = fab;
 		this.modelo = mod;

@@ -14,7 +14,16 @@ public class Motor implements Comparable<Motor> {
 		this.capacidad = capacidad;
 		this.eficiencia = eficiencia;
 	}
-
+	
+	public Motor(String s) {
+		String[] partes = s.split(";");
+		this.tamaño = Double.valueOf(partes[0].trim());
+		this.potencia = Integer.decode(partes[1].trim());
+		this.capacidad = Double.valueOf(partes[2].trim());
+		this.eficiencia = Integer.decode(partes[3].trim());
+		this.eficiencia = Integer.decode(partes[3].trim());
+	}
+	
 	public Double getTamaño() {
 		return tamaño;
 	}

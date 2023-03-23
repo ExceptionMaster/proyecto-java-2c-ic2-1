@@ -8,9 +8,9 @@ public class Parsers {
 	/* Parsea PASSENGER y CAR del enumerado TipoCoche a los strings "Passenger" y "Car" */
 	public static String tipoCocheParser(TipoCoche tipo) {
 		String res = null;
-		if(tipo==TipoCoche.PASSENGER) {
+		if(tipo==TipoCoche.Passenger) {
 			res = "Passenger";
-		} else if(tipo==TipoCoche.CAR) {
+		} else if(tipo==TipoCoche.Car) {
 			res = "Car";
 		}
 		return res;
