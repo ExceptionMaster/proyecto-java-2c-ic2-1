@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import fp.common.ColorCoche;
 import fp.common.Motor;
@@ -13,13 +15,13 @@ import fp.utiles.Fichero;
 
 
 public class FactoriaCoches {
-	public static List<Coche> leeCoches(String ruta) {
-		List<String> lista = Fichero.leerFichero(ruta, true);
-		List<Coche> coches = new ArrayList<Coche>();
+	public static Concesionario leerCoches(String rutaFichero) {
+		List<String> lista = Fichero.leerFichero(rutaFichero, true);
+		Set<Coche> aux = new HashSet<Coche>();
 		for(String s:lista) {
-			coches.add(parseaCoches(s));
+			aux.add(parseaCoches(s));
 		}
-		return coches;
+		return new Concesionario(aux);
 	}
 	
 	public static Coche parseaCoches(String cocheString) {

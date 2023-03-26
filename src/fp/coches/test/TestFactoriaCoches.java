@@ -4,12 +4,15 @@ import fp.coches.FactoriaCoches;
 import fp.utiles.Mostrar;
 
 public class TestFactoriaCoches {
+	public static void print(Object o) {
+		System.out.println(o);
+	}
 	
 	public static void TestFactoria() {
-		System.out.println();
-		System.out.println("-------------- PRUEBA DEL OBJETO FactoriaCoches -----------");
-		Mostrar.mostrar(FactoriaCoches.leeCoches("./data/Coches.csv"), FactoriaCoches.leeCoches("./data/Coches.csv").size());
-		System.out.println("-----------------------------------------------------------");
+		print("-------------- PRUEBA DE FactoriaCoches -----------");
+		Mostrar.mostrar(FactoriaCoches.leerCoches("./data/Coches.csv").getCoches(), 10);
+		print(".\n.\n.");
+		print("---------------------------------------------------");
 	}
 	
 	public static void main(String[] args) {
