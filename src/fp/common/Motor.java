@@ -9,6 +9,7 @@ public class Motor implements Comparable<Motor> {
 	private Integer eficiencia;
 	
 	public Motor(double tamaño, int potencia, double capacidad, int eficiencia) {
+		/* Constructor que recibe todas las propiedades */
 		this.tamaño = tamaño;
 		this.potencia = potencia;
 		this.capacidad = capacidad;
@@ -16,6 +17,7 @@ public class Motor implements Comparable<Motor> {
 	}
 	
 	public Motor(String s) {
+		/* Constructor a partir de String */
 		String[] partes = s.split(";");
 		this.tamaño = Double.valueOf(partes[0].trim());
 		this.potencia = Integer.decode(partes[1].trim());
@@ -68,7 +70,7 @@ public class Motor implements Comparable<Motor> {
 
 	@Override
 	public int compareTo(Motor o) {
-		// TODO Auto-generated method stub
+		// Compara todas las propiedades
 		this.getTamaño().compareTo(o.getTamaño());
 		this.getPotencia().compareTo(o.getPotencia());
 		this.getCapacidad().compareTo(o.getCapacidad());

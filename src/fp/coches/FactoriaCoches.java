@@ -15,6 +15,8 @@ import fp.utiles.Fichero;
 
 
 public class FactoriaCoches {
+	/* Lee el fichero CSV y devuelve un tipo Concesionario cuya única 
+	 * propiedad es un Set de tipos Coche*/
 	public static Concesionario leerCoches(String rutaFichero) {
 		List<String> lista = Fichero.leerFichero(rutaFichero, true);
 		Set<Coche> aux = new HashSet<Coche>();
@@ -25,6 +27,9 @@ public class FactoriaCoches {
 	}
 	
 	public static Coche parseaCoches(String cocheString) {
+		/* Parsea un string tipo 
+		 * "Fabricante;Modelo;Tamaño;Potencia;Capacidad;Eficiencia;Tipo;Precio;salidaMercado;listaColores" 
+		 * para crear un tipo Coche*/
 		String[] csa = cocheString.split(";");
 		String fabricante = csa[0].trim();
 		String modelo = csa[1].trim();

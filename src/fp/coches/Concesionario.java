@@ -14,11 +14,14 @@ public class Concesionario {
 	private Set<Coche> coches;
 	
 	public Concesionario() {
+		/* Constructor vacío */
 		super();
 		this.coches = new HashSet<Coche>();
 	}
 	
 	public Concesionario(Set<Coche> c) {
+		/* Constructor que recibe un Set de tipos Coche
+		 * y lo asigna a la propiedad this.coches */
 		super();
 		this.coches = c;
 	}
@@ -61,6 +64,8 @@ public class Concesionario {
 	}
 	
 	public Boolean existeCochePrecioMenor(Integer p) {
+		/* Métoto para saber si existe un coche con precio menor
+		 * a uno dado */
 		Boolean res = false;
 		for(Coche c:coches) {
 			if(c.getPrecio()<p) {
@@ -71,6 +76,8 @@ public class Concesionario {
 	}
 	
 	public Double getMediaLitros() {
+		/* Método para obtener la media de capacidad del motor en 
+		 * Litros de todos los coches */
 		Double aux = 0.0;
 		for(Coche c:coches) {
 			aux+=c.getMotor().getTamaño();
@@ -79,6 +86,7 @@ public class Concesionario {
 	}
 	
 	public List<Coche> getCochesPorMarca(String marca){
+		/* Método para obtener los coches filtrando por marca */
 		List<Coche> aux = new ArrayList<Coche>();
 		for(Coche c:coches) {
 			if(c.getFabricante().equals(marca)) {
@@ -89,6 +97,7 @@ public class Concesionario {
 	}
 	
 	public Map<LocalDate,Set<Coche>> getCochesPorFecha(){
+		/* Método para obtener en un map los Coches agrupados por fecha */
 		Map<LocalDate,Set<Coche>> res = new HashMap<LocalDate,Set<Coche>>();
 		for(Coche c: coches) {
 			LocalDate key = c.getSalidaMercado();
@@ -104,6 +113,7 @@ public class Concesionario {
 	}
 	
 	public Map<Integer, Long> getNumeroCochesPorAnyo(){
+		/* Método para obtener en un map el número de coches agrupados por año */
 		Map<Integer, Long> res = new HashMap<Integer, Long>();
 		for(Coche c: coches) {
 			Integer key = c.getSalidaMercado().getYear();

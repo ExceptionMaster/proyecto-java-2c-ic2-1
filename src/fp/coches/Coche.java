@@ -119,7 +119,7 @@ public class Coche implements Comparable<Coche>{
 	// COMPARETO
 	@Override
 	public int compareTo(Coche c) {
-		// TODO Apéndice de método generado automáticamente
+		// Compara todas las propiedades
 		int res;
 		if(c==null) {
 			throw new NullPointerException();

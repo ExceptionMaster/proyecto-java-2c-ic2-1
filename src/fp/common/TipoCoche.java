@@ -1,7 +1,7 @@
 package fp.common;
 
 public enum TipoCoche {
-	Passenger("Passenger"), Car("Car");
+	Passenger("PASSENGER"), Car("CAR");
 	
 	private String tipo;
 	
