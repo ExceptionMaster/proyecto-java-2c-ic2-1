@@ -74,6 +74,9 @@ public class TestConcesionario {
 		Mostrar.mostrar(aux, aux.size());
 		print("----------------------------------------------------------------");
 		
+		print("\n-------------- PRUEBA DE getCochesPorFechaStream --------------");
+		print("Coches por fecha: \n" + setCo.getCochesPorFechaStream());
+		print("-----------------------------------------------------------");
 	}
 	
 	public static void main(String[] args) {

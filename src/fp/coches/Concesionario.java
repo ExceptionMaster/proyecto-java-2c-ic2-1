@@ -209,5 +209,14 @@ public class Concesionario {
 
 	}
 	
+	public Map<LocalDate, Set<Coche>> getCochesPorFechaStream(){
+		/* Método que no recibe parámetros y devuelve un map
+		 * que tiene como clave la fecha de salida y como valor el 
+		 * conjunto de tipos base que salieron en dicha fecha */
+		return getCoches().stream()
+				  .collect(Collectors.groupingBy(x -> x.getSalidaMercado(),
+						    Collectors.toSet()));
+	}
+	
 	
 }
