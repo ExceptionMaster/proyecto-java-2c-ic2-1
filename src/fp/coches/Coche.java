@@ -21,8 +21,9 @@ public class Coche implements Comparable<Coche>{
 	private List<ColorCoche> listaColores = new ArrayList<ColorCoche>();
 	
 	public Coche(String fab,String mod,Motor motor,TipoCoche tipo,Integer prec,LocalDate salMerc,List<ColorCoche> cols) {
-		/* Constructor al que se le pasa como parámetros cada una de las propiedades
-		 * del tipo, para así construir nuevos tipos con dichas propiedades.*/
+		/* Constructor que recibe todas las propiedades básicas para 
+		 * luego generar tipos base con dichas propiedades.
+		 */
 		Checkers.check("El precio no puede ser negativo",prec>=0);
 		Checkers.check("Los colores no pueden ser null", listaColores!=null);
 		this.fabricante = fab;
@@ -35,8 +36,10 @@ public class Coche implements Comparable<Coche>{
 	}
 	
 	public Coche(String fab, String mod, List<ColorCoche> cols) {
-		/* Constructor al que se le pasa como parámetros las propiedades fabricante, modelo
-		 * y colores, por ejemplo para realizar una búsqueda rápida de un coche y sus colores.
+		/* Constructor que recibe el nombre del fabricante (String), 
+		 * el modelo (String) y una lista de colores (List<ColorCoche>)
+		 * para generar tipos base pero con propiedades reducidas y 
+		 * consideradas importantes.
 		 */
 		Checkers.check("Los colores no pueden ser null", listaColores!=null);
 		this.fabricante = fab;
@@ -58,7 +61,7 @@ public class Coche implements Comparable<Coche>{
 	}
 
 	public Integer getPrecio() {
-		return precio;
+		return this.precio;
 	}
 
 	public void setPrecio(Integer precio) {
@@ -118,8 +121,8 @@ public class Coche implements Comparable<Coche>{
 
 	// COMPARETO
 	@Override
-	public int compareTo(Coche c) {
-		// Compara todas las propiedades
+	public int compareTo(Coche c) { 
+		// Compara todas las propiedades en cascada
 		int res;
 		if(c==null) {
 			throw new NullPointerException();

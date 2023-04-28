@@ -26,6 +26,7 @@ public class Motor implements Comparable<Motor> {
 		this.eficiencia = Integer.decode(partes[3].trim());
 	}
 	
+	// GETTERS
 	public Double getTamaño() {
 		return tamaño;
 	}
@@ -42,19 +43,20 @@ public class Motor implements Comparable<Motor> {
 		return eficiencia;
 	}
 
+	//TOSTRING
 	@Override
 	public String toString() {
 		return "Motor [tamaño=" + tamaño + ", potencia=" + potencia + ", capacidad=" + capacidad + ", eficiencia="
 				+ eficiencia + "]";
 	}
 	
-	
-
+	//HASHCODE
 	@Override
 	public int hashCode() {
 		return Objects.hash(capacidad, eficiencia, potencia, tamaño);
 	}
 
+	//EQUALS
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,7 +69,8 @@ public class Motor implements Comparable<Motor> {
 		return Objects.equals(capacidad, other.capacidad) && Objects.equals(eficiencia, other.eficiencia)
 				&& Objects.equals(potencia, other.potencia) && Objects.equals(tamaño, other.tamaño);
 	}
-
+	
+	//COMPARETO
 	@Override
 	public int compareTo(Motor o) {
 		// Compara todas las propiedades

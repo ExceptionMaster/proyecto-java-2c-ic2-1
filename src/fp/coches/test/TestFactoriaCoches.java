@@ -10,7 +10,11 @@ public class TestFactoriaCoches {
 	
 	public static void TestFactoria() {
 		print("-------------- PRUEBA DE FactoriaCoches -----------");
+		print("[leerCoches]");
 		Mostrar.mostrar(FactoriaCoches.leerCoches("./data/Coches.csv").getCoches(), 10);
+		print(".\n.\n.");
+		print("[leerCochesStream]");
+		Mostrar.mostrar(FactoriaCoches.leerCochesStream("./data/Coches.csv").getCoches(), 10);
 		print(".\n.\n.");
 		print("---------------------------------------------------");
 	}

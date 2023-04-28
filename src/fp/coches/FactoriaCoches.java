@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import fp.common.ColorCoche;
 import fp.common.Motor;
@@ -24,6 +25,12 @@ public class FactoriaCoches {
 			aux.add(parseaCoches(s));
 		}
 		return new Concesionario(aux);
+	}
+	
+	public static Concesionario leerCochesStream(String rutaFichero) {
+		List<String> lista = Fichero.leerFichero(rutaFichero, true);
+		Stream<Coche> streamCoche = lista.stream().map(FactoriaCoches::parseaCoches);
+		return new Concesionario(streamCoche);
 	}
 	
 	public static Coche parseaCoches(String cocheString) {
@@ -51,4 +58,6 @@ public class FactoriaCoches {
 		}
 		return new Coche(fabricante,modelo,motor,tipo,precio,salidaMercado,listaColores);
 	}
+	
+	
 }
