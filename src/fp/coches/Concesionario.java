@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -218,5 +220,45 @@ public class Concesionario {
 						    Collectors.toSet()));
 	}
 	
+	public List<String> getFabricantesDistintos() {
+		/* Método que no recibe parámetros y devuelve una
+		 * lista con los nombres de los fabricantes
+		 * sin repetirse ninguno */
+		return getCoches().stream()
+				.map(Coche::getFabricante)
+				.distinct()
+				.collect(Collectors.collectingAndThen(Collectors.toList(), 
+						lista -> List.copyOf(lista)));
+	}
 	
+	public Map<LocalDate, Coche> getCochesMasCarosPorFecha() {
+		/* Método que no recibe parámetros y devuelve un map
+		 * que tiene como clave la fecha de salida al mercado
+		 * y como valor el coche más caro de esa fecha */
+		return getCoches().stream()
+				.sorted(Comparator.comparing(Coche::getPrecio))
+				.collect(Collectors.groupingBy(Coche::getSalidaMercado,
+						Collectors.collectingAndThen(Collectors.toList(),
+								lista -> List.copyOf(lista)
+								.stream()
+								.max(Comparator.comparing(Coche::getPrecio)).get())));
+				  
+	}
+	
+	public SortedMap<String, List<Coche>> getCochesConMejorMotorPorFabricante() {
+		/* Método que no recibe parámetros y devuelve un map
+		 * que tiene como clave el nombre del fabricante y como
+		 * valor una lista de coches con los mejores motores
+		 * de ese fabricante (Los motores comparados por orden 
+		 * natural) */
+		return getCoches().stream()
+				.sorted(Comparator.comparing(Coche::getMotor))
+				.collect(Collectors.groupingBy(
+	                    Coche::getFabricante,
+	                    TreeMap::new,
+	                    Collectors.toList()
+	            ));
+				
+	}
+		
 }

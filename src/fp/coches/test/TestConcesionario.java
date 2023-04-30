@@ -77,6 +77,18 @@ public class TestConcesionario {
 		print("\n-------------- PRUEBA DE getCochesPorFechaStream --------------");
 		print("Coches por fecha: \n" + setCo.getCochesPorFechaStream());
 		print("-----------------------------------------------------------");
+		
+		print("\n-------------- PRUEBA DE getFabricantesDistintos --------------");
+		print("Fabricantes distintos: \n" + setCo.getFabricantesDistintos());
+		print("-----------------------------------------------------------");
+		
+		print("\n-------------- PRUEBA DE getCochesMasCarosPorFecha --------------");
+		print("Coches más caros por fecha: \n" + setCo.getCochesMasCarosPorFecha());
+		print("-----------------------------------------------------------");
+		
+		print("\n-------------- PRUEBA DE getCochesConMejorMotorPorFabricante --------------");
+		print("Coches con mejor motor por Fabricante: \n" + setCo.getCochesConMejorMotorPorFabricante());
+		print("-----------------------------------------------------------");		
 	}
 	
 	public static void main(String[] args) {
