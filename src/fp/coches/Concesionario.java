@@ -163,7 +163,7 @@ public class Concesionario {
 	/* MÉTODOS REHECHOS CON STREAMS PARA ENTREGA 3 */
 	
 	public Boolean existeCochePrecioMenorStream(Integer p) {
-		/* Métoto que recibe como parámetro un entero p
+		/* Método que recibe como parámetro un entero p
 		 * y devuelve true si existe un coche con precio
 		 * menor a p */
 		return getCoches().stream()
@@ -248,9 +248,8 @@ public class Concesionario {
 	public SortedMap<String, List<Coche>> getCochesConMejorMotorPorFabricante() {
 		/* Método que no recibe parámetros y devuelve un map
 		 * que tiene como clave el nombre del fabricante y como
-		 * valor una lista de coches con los mejores motores
-		 * de ese fabricante (Los motores comparados por orden 
-		 * natural) */
+		 * valor una lista de coches coches ordenados por la 
+		 * comparación de orden natural de los motores */
 		return getCoches().stream()
 				.sorted(Comparator.comparing(Coche::getMotor))
 				.collect(Collectors.groupingBy(
@@ -259,6 +258,16 @@ public class Concesionario {
 	                    Collectors.toList()
 	            ));
 				
+	}
+	
+	public String getCocheMasCaro() {
+		/* Método que no recibe parámetros y devuelve el coche más 
+		 * caro de entre todos y su fecha de salida. */
+		Map<LocalDate,Coche> mapaCoches = getCochesMasCarosPorFecha();
+		Coche masCaro = mapaCoches.values().stream()
+				.max(Comparator.comparing(Coche::getPrecio))
+				.get();
+		return masCaro.getFabricante()+" "+masCaro.getModelo()+" ("+masCaro.getSalidaMercado()+")";
 	}
 		
 }

@@ -118,6 +118,18 @@ coches        | ``Set<Coche>``        | consultable y modificable.
 -	toString: Formatea el tipo en un String legible.
 - hashCode: Generea un hashcode.
 
+**MÉTODOS USANDO STREAMS**
+- existeCochePrecioMenorStream: Devuelve un ``Boolean`` que es ``true`` si existe un tipo Coche con un precio menor a uno dado.
+- getMediaLitrosStream: Devuelve un ``Integer`` que es la media de capacidad del motor de los coches.
+- getCochesPorMarcaStream: Devuelve una ``List<Coche>`` con los tipos Coche que sean de la marca dada.
+- getCocheMasCaroPorMarca: Devuelve un tipo ``Coche`` el cual tiene la propiedad Precio más alta de entre todos los de la marca dada.
+- getFiltroPrecioOrdenadoPorMarca: Devuelve una ``List<Coche>`` ordenada por orden natural y habiendo filtrado sus tipos ``Coche`` anteriormente por un precio dado (siendo mayor o menor que este).
+- getCochesPorFechaStream: Devuelve un ``Map<LocalDate, Set<Coche>>`` agrupando los coches por su fecha de salida, es decir, la clave es la fecha y el valor el conjunto de coches de esa fecha.
+- getFabricantesDistintos: Devuelve una ``List<String>`` que contiene los nombres de los fabricantes distintos sin repetición.
+- getCochesMasCarosPorFecha: Devuelve un ``Map<LocalDate, Coche>`` donde la clave es la fecha de salida al mercado y el valor el coche más caro de esa fecha.
+- getCochesConMejorMotorPorFabricante: Devuelve un ``SortedMap<String, List<Coche>>`` donde la clave es el fabricante y el valor es la lista de coches ordenados por la comparación de orden natural de los motores.
+- getCocheMasCaro: Devuelve una String con el fabricante, modelo y fecha del coche más caro de todos.
+
 ### 🔷 **Tipo FactoriaCoches**
 Tipo para leer fichero CSV y parsear cadenas del CSV.
 **MÉTODOS**:

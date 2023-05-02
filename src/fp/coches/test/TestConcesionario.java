@@ -88,7 +88,11 @@ public class TestConcesionario {
 		
 		print("\n-------------- PRUEBA DE getCochesConMejorMotorPorFabricante --------------");
 		print("Coches con mejor motor por Fabricante: \n" + setCo.getCochesConMejorMotorPorFabricante());
-		print("-----------------------------------------------------------");		
+		print("-----------------------------------------------------------");
+		
+		print("\n-------------- PRUEBA DE getCocheMasCaro --------------");
+		print("Coche más caro de todos y su fecha: \n" + setCo.getCocheMasCaro());
+		print("-----------------------------------------------------------");
 	}
 	
 	public static void main(String[] args) {
