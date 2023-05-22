@@ -12,6 +12,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -269,5 +271,63 @@ public class Concesionario {
 				.get();
 		return masCaro.getFabricante()+" "+masCaro.getModelo()+" ("+masCaro.getSalidaMercado()+")";
 	}
+	
+	
+	// DEFENSA ==================================================================================
+	
+	public Double getMediaPreciosDelFabricante(String fabricante) {
+		/* Recibe un String que es el fabricante y devuelve la media
+		 * de los precios de los coches de ese fabricante. */	
+		return getCoches().stream()
+				.filter(x->x.getFabricante().equals(fabricante))
+				.mapToDouble(x -> x.getPrecio())
+				.average().getAsDouble();
+	}
+	
+	public Double getMediaPreciosDelFabricanteBucle(String fabricante) {
+		/* Recibe un String que es el fabricante y devuelve la media
+		 * de los precios de los coches de ese fabricante. */
+		Double i = 0.0;
+		Integer n = 0;
+		for(Coche c:getCoches()) {
+			if(c.getFabricante().equals(fabricante)) {
+				n++;
+				i+=c.getPrecio();
+			}
+		}
+		return i/n;
+	}
+	
+	public Integer getMedianaPreciosDelFabricante(String fabricante) {
+		/* Recibe un string que es el fabricante por el que se filtrará.
+		 * Luego calcula una lista de precios de los coches de ese fabricante.
+		 * Por último calcula la mediana de los precios.
+		 * Sea n el número total de datos:
+		 * 	- Si es impar -> mediana = n/2
+		 * 	- Si es par -> mediana = ((n/2)+(n/2)-1)/2 */
+		Integer res = 0;
+		Function<Coche,Integer> f = x->x.getPrecio();
+		List<Integer> listaPrecios = getCoches().stream()
+				.filter(x->x.getFabricante().equals(fabricante))
+				.collect(Collectors.toList())
+				.stream()
+					.map(f).collect(Collectors.toList());
+		Integer n = listaPrecios.size();
+		if(n%2!=0) {
+			res = listaPrecios.get(n/2);
+		} else if(n%2==0) {
+			res = (listaPrecios.get(n/2)+listaPrecios.get((n/2)-1))/2;
+		}
+		return res;
+	}
+
+	public Map<String, Integer> getPorcentajeCochesConPrecioMayorA(Double p) {
+		Function<Coche,Integer> f = x->x.getPrecio();
+		return getCoches().stream()
+				.filter(x->x.getPrecio()>p)
+				.collect(Collectors.groupingBy(Coche::getFabricante,
+						Collectors.collectingAndThen(Collectors.toList(),f)));
+	}
+	
 		
 }

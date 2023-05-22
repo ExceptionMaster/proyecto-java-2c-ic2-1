@@ -27,6 +27,14 @@ public class FactoriaCoches {
 		return new Concesionario(aux);
 	}
 	
+	public static List<String> leeAtributos(String rutaFichero){
+		List<String> lista = Fichero.leerFichero(rutaFichero, false);
+		String strAttrs = lista.get(0);
+		String[] strAttrsTrozos = strAttrs.split(";");
+		List<String> res = Arrays.asList(strAttrsTrozos);
+		return res;
+	}
+	
 	public static Concesionario leerCochesStream(String rutaFichero) {
 		List<String> lista = Fichero.leerFichero(rutaFichero, true);
 		Stream<Coche> streamCoche = lista.stream().map(FactoriaCoches::parseaCoches);
