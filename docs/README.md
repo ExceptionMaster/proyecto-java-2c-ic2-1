@@ -1,5 +1,5 @@
 # Proyecto del Segundo Cuatrimestre Fundamentos de Programación (Curso  22/23)
-## 👤 Autor: José Manuel Amador Gallardo &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  🪪 UVUS: SMT4497
+## 👤 Autor: José Manuel Amador Gallardo &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  🪪 UVUS: -------
 
 El dataset consta de varias propiedades de coches (como pueden ser fabricante, modelo, color, tamaño del motor, capacidad de combustible, etc). 
 
